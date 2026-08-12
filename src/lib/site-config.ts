@@ -9,7 +9,7 @@ export const site = {
   brand: "Bad at Marketing",
   tagline: "A creative and digital studio for brands that were told they're bad at marketing.",
   hero: {
-    headline: "We make good marketing for people who think they're bad at it.",
+    headline: "Bad at Marketing",
     subhead:
       "Brand identity, websites, content, campaigns and film — built by one small studio, end to end. Pick what you need below and tell us when you need it.",
   },

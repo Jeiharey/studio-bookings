@@ -8,10 +8,12 @@ export function BrandMark() {
       className="focus-ring group inline-flex items-center gap-3"
       aria-label={`${site.brand} — home`}
     >
-      <span className="relative grid h-7 w-7 place-items-center rounded-sm bg-ink">
-        <span className="block h-2 w-2 rounded-full bg-coral transition-transform duration-300 group-hover:translate-x-[3px]" />
+      <span className="relative grid h-8 w-8 place-items-center rounded-sm bg-ink sm:h-10 sm:w-10">
+        <span className="block h-2.5 w-2.5 rounded-full bg-coral transition-transform duration-300 group-hover:translate-x-[3px] sm:h-3 sm:w-3" />
       </span>
-      <span className="font-display text-[15px] font-semibold tracking-tight">{site.brand}</span>
+      <span className="font-display text-lg font-semibold tracking-tight sm:text-2xl md:text-[2rem]">
+        {site.brand}
+      </span>
     </Link>
   );
 }
