@@ -51,7 +51,7 @@ function ContactPage() {
     e.preventDefault();
     if (!validate() || !hasSelection) return;
     setLoading(true);
-    setErrors((prev) => ({ ...prev, form: undefined }));
+    setErrors(({ form: _form, ...rest }) => rest);
     try {
       await send({
         data: {
