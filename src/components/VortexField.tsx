@@ -157,7 +157,7 @@ export function VortexField({ className = "" }: { className?: string }) {
   }, []);
 
   return (
-    <div aria-hidden className={`relative ${className}`}>
+    <div aria-hidden className={className}>
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 h-[46%] w-[46%] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
