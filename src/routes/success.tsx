@@ -23,8 +23,8 @@ function SuccessPage() {
 
       <main className="flex flex-1 items-center px-6 md:px-12">
         <div className="mx-auto w-full max-w-5xl py-20">
-          <p className="font-mono text-xs text-coral">Received</p>
-          <h1 className="mt-4 max-w-2xl text-3xl font-semibold sm:text-4xl md:text-5xl">
+          <p className="label-mono text-signal">Received</p>
+          <h1 className="tech-caps mt-4 max-w-2xl text-3xl sm:text-4xl md:text-5xl">
             Thanks — we've got your request.
           </h1>
           <p className="mt-6 max-w-xl text-base text-muted-foreground">
@@ -34,7 +34,7 @@ function SuccessPage() {
           <div className="mt-10">
             <Link
               to="/"
-              className="focus-ring inline-flex min-h-[44px] items-center rounded-sm bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors duration-200 hover:bg-accent"
+              className="focus-ring glow-signal inline-flex min-h-[48px] items-center gap-3 rounded-full bg-primary px-6 text-sm font-semibold tracking-widest text-primary-foreground uppercase transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-35"
             >
               Back to home
             </Link>

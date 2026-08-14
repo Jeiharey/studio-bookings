@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { useState } from "react";
 
-import { SwatchField } from "@/components/SwatchField";
-import { SiteFooter, SiteHeader } from "@/components/chrome";
+import { VortexField } from "@/components/VortexField";
+import { SiteFooter, SiteHeader, SocialRow } from "@/components/chrome";
 import { services, site } from "@/lib/site-config";
 
 export const Route = createFileRoute("/")({
@@ -18,82 +19,74 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const socials = site.socials.filter((s) => s.url);
+  const [active, setActive] = useState<string | null>(null);
 
   return (
-    <div className="relative flex min-h-screen flex-col overflow-hidden">
-      <SwatchField />
+    <div className="relative flex min-h-screen flex-col overflow-hidden bg-background">
+      <VortexField className="pointer-events-none fixed inset-x-0 top-0 h-[60vh] opacity-70 md:left-[34%] md:h-screen md:opacity-100" />
 
       <SiteHeader />
 
       <main className="relative z-10 flex-1 px-6 md:px-12">
-        <section className="mx-auto max-w-5xl pt-10 pb-16 md:pt-24 md:pb-24">
-          <p className="label-mono">Bookings open</p>
-          <h1 className="mt-5 max-w-3xl text-4xl leading-[1.05] font-semibold sm:text-5xl md:text-6xl">
-            {site.hero.headline}
-          </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            {site.hero.subhead}
-          </p>
-        </section>
+        <section className="mx-auto flex max-w-7xl flex-col justify-center pt-[46vh] pb-16 md:min-h-[72vh] md:max-w-none md:pt-4 md:pb-10">
+          <div className="max-w-xl">
+            <h1 className="tech-caps text-sm md:text-base">{site.hero.eyebrow}</h1>
+            <span className="mt-3 block h-[3px] w-10 bg-signal" />
 
-        <section aria-labelledby="services-heading" className="mx-auto max-w-5xl pb-20">
-          <div className="flex items-baseline justify-between border-b pb-4">
-            <h2 id="services-heading" className="label-mono">
-              Services
-            </h2>
-            <span className="label-mono">Select one to begin</span>
+            <nav aria-label="Services" className="mt-8">
+              <ul>
+                {services.map((service) => {
+                  const isActive = active === service.slug;
+                  return (
+                    <li key={service.slug}>
+                      <Link
+                        to="/services/$slug"
+                        params={{ slug: service.slug }}
+                        onMouseEnter={() => setActive(service.slug)}
+                        onMouseLeave={() => setActive(null)}
+                        onFocus={() => setActive(service.slug)}
+                        onBlur={() => setActive(null)}
+                        className={`focus-ring group flex min-h-[44px] items-center gap-3 py-2 transition-colors duration-200 ${
+                          isActive ? "text-signal" : "text-foreground"
+                        }`}
+                      >
+                        <span className="flex w-8 shrink-0 items-center">
+                          <span
+                            className={`h-1.5 w-1.5 rounded-full bg-signal transition-opacity duration-200 ${
+                              isActive ? "opacity-100" : "opacity-0"
+                            }`}
+                          />
+                          <span
+                            className={`ml-1 h-px bg-signal transition-all duration-300 ${
+                              isActive ? "w-5 opacity-100" : "w-0 opacity-0"
+                            }`}
+                          />
+                        </span>
+                        <span className="tech-caps text-xl leading-tight sm:text-2xl md:text-[1.75rem]">
+                          {service.title}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+
+            <p className="label-mono mt-8">{site.hero.subhead}</p>
+
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <Link
+                to="/services/$slug"
+                params={{ slug: services[0]!.slug }}
+                className="focus-ring glow-signal inline-flex min-h-[48px] items-center gap-3 rounded-full bg-primary px-6 text-sm font-semibold tracking-widest text-primary-foreground uppercase"
+              >
+                Let&apos;s talk
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </Link>
+              <SocialRow />
+            </div>
           </div>
-
-          <ul>
-            {services.map((service) => (
-              <li key={service.slug}>
-                <Link
-                  to="/services/$slug"
-                  params={{ slug: service.slug }}
-                  className="focus-ring group grid grid-cols-[auto_1fr_auto] items-center gap-x-4 gap-y-1 border-b py-5 transition-colors duration-200 hover:bg-sand/60 md:gap-x-8 md:py-7"
-                >
-                  <span className="font-mono text-xs text-muted-foreground transition-colors duration-200 group-hover:text-coral">
-                    {service.number}
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block font-display text-xl font-medium tracking-tight md:text-2xl">
-                      {service.title}
-                    </span>
-                    <span className="mt-1 block text-sm text-muted-foreground">
-                      {service.summary}
-                    </span>
-                  </span>
-                  <ArrowRight
-                    className="h-5 w-5 text-muted-foreground transition-all duration-200 group-hover:translate-x-1 group-hover:text-accent"
-                    aria-hidden
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
         </section>
-
-        {socials.length > 0 && (
-          <section className="mx-auto max-w-5xl pb-20">
-            <h2 className="label-mono">Elsewhere</h2>
-            <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
-              {socials.map((s) => (
-                <li key={s.label}>
-                  <a
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="focus-ring link-underline inline-flex items-center gap-1 text-sm font-medium"
-                  >
-                    {s.label}
-                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
       </main>
 
       <SiteFooter />

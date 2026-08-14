@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Bad at Marketing — design system
- * Paper background, ink text, electric indigo accent, coral secondary.
- * Typography: Space Grotesk (display), Inter (body), JetBrains Mono (labels).
+ * BRINCO — design system
+ * Near-black background, white type, signal red accent.
+ * Typography: Chakra Petch (display/technical), Inter (body), JetBrains Mono (labels).
  */
 
 @theme inline {
@@ -18,7 +18,7 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
 
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Chakra Petch", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
@@ -43,39 +43,40 @@
   --color-ring: var(--ring);
   --color-ink: var(--ink);
   --color-paper: var(--paper);
-  --color-indigo: var(--indigo);
-  --color-coral: var(--coral);
-  --color-sand: var(--sand);
+  --color-signal: var(--signal);
+  --color-coral: var(--signal);
+  --color-sand: var(--surface);
 }
 
 :root {
   --radius: 0.25rem;
 
-  --paper: oklch(0.976 0.008 85);
-  --sand: oklch(0.938 0.014 80);
-  --ink: oklch(0.19 0.012 65);
-  --indigo: oklch(0.505 0.238 274);
-  --coral: oklch(0.672 0.176 36);
+  --paper: oklch(0.145 0 0);
+  --surface: oklch(0.205 0 0);
+  --ink: oklch(0.985 0 0);
+  --signal: oklch(0.585 0.222 27.5);
 
   --background: var(--paper);
   --foreground: var(--ink);
-  --card: oklch(0.992 0.004 85);
+  --card: oklch(0.185 0 0);
   --card-foreground: var(--ink);
-  --popover: oklch(0.992 0.004 85);
+  --popover: oklch(0.185 0 0);
   --popover-foreground: var(--ink);
   --primary: var(--ink);
   --primary-foreground: var(--paper);
-  --secondary: var(--sand);
+  --secondary: var(--surface);
   --secondary-foreground: var(--ink);
-  --muted: var(--sand);
-  --muted-foreground: oklch(0.505 0.014 70);
-  --accent: var(--indigo);
-  --accent-foreground: oklch(0.99 0.004 85);
-  --destructive: oklch(0.55 0.204 27);
-  --destructive-foreground: oklch(0.99 0.004 85);
-  --border: oklch(0.882 0.012 80);
-  --input: oklch(0.882 0.012 80);
-  --ring: var(--indigo);
+  --muted: var(--surface);
+  --muted-foreground: oklch(0.63 0 0);
+  --accent: var(--signal);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.6 0.21 25);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.28 0 0);
+  --input: oklch(0.28 0 0);
+  --ring: var(--signal);
+
+  color-scheme: dark;
 }
 
 @layer base {
@@ -86,6 +87,7 @@
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    background-color: var(--color-background);
   }
 
   body {
@@ -99,21 +101,33 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.03em;
+    letter-spacing: 0.02em;
   }
 
   ::selection {
-    background-color: var(--coral);
-    color: var(--paper);
+    background-color: var(--signal);
+    color: var(--ink);
+  }
+
+  input[type="date"],
+  input[type="time"] {
+    color-scheme: dark;
   }
 }
 
 @utility label-mono {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted-foreground);
+}
+
+@utility tech-caps {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
 }
 
 @utility link-underline {
@@ -127,9 +141,19 @@
   }
 }
 
+@utility glow-signal {
+  box-shadow: 0 0 0 rgba(232, 52, 42, 0);
+  transition:
+    box-shadow 260ms ease,
+    transform 260ms ease;
+  &:hover {
+    box-shadow: 0 0 28px -2px rgba(232, 52, 42, 0.55);
+  }
+}
+
 @utility focus-ring {
   &:focus-visible {
-    outline: 2px solid var(--indigo);
+    outline: 2px solid var(--signal);
     outline-offset: 3px;
   }
 }
