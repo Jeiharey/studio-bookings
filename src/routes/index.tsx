@@ -23,7 +23,7 @@ function Index() {
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-background">
-      <VortexField className="pointer-events-none absolute inset-x-0 top-0 h-[62vh] opacity-70 md:inset-y-0 md:left-auto md:right-[-6%] md:h-auto md:w-[62%] md:opacity-100" />
+      <VortexField className="pointer-events-none fixed inset-x-0 top-0 h-[60vh] opacity-70 md:left-[34%] md:h-screen md:opacity-100" />
 
       <SiteHeader />
 
