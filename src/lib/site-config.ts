@@ -6,24 +6,24 @@
  */
 
 export const site = {
-  brand: "Bad at Marketing",
-  tagline: "A creative and digital studio for brands that were told they're bad at marketing.",
+  brand: "BRINCO",
+  tagline: "A creative and digital studio. Brand, web, content, campaigns and film.",
   hero: {
-    headline: "Bad at Marketing",
-    subhead:
-      "Brand identity, websites, content, campaigns and film — built by one small studio, end to end. Pick what you need below and tell us when you need it.",
+    eyebrow: "What we do",
+    headline: "BRINCO",
+    subhead: "Book your next project",
   },
   email: "kailainathanjeiharey@gmail.com",
-  /** Add real profile URLs here. Empty string = hidden from the site. */
+  /** Add real profile URLs here. Empty string = icon hidden. */
   socials: [
-    { label: "Facebook", url: "" },
-    { label: "Instagram", url: "" },
-    { label: "WhatsApp", url: "" },
-    { label: "Threads", url: "" },
-    { label: "X", url: "" },
-    { label: "LinkedIn", url: "" },
+    { label: "Instagram", icon: "instagram", url: "" },
+    { label: "WhatsApp", icon: "whatsapp", url: "" },
+    { label: "Threads", icon: "threads", url: "" },
+    { label: "X", icon: "x", url: "" },
+    { label: "LinkedIn", icon: "linkedin", url: "" },
   ],
 } as const;
+
 
 export type ServiceItem = {
   id: string;
