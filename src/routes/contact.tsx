@@ -101,7 +101,7 @@ function ContactPage() {
 
           <header className="mt-8 border-b pb-8">
             <p className="label-mono">Final step</p>
-            <h1 className="mt-3 text-3xl font-semibold sm:text-4xl md:text-5xl">Your details</h1>
+            <h1 className="tech-caps mt-3 text-3xl sm:text-4xl md:text-5xl">Your details</h1>
           </header>
 
           {!hasSelection && (
@@ -173,7 +173,7 @@ function ContactPage() {
                 <button
                   type="submit"
                   disabled={loading || !hasSelection}
-                  className="focus-ring mt-8 min-h-[48px] w-full rounded-sm bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors duration-200 hover:bg-accent disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-primary sm:w-auto"
+                  className="focus-ring glow-signal inline-flex min-h-[48px] items-center gap-3 rounded-full bg-primary px-6 text-sm font-semibold tracking-widest text-primary-foreground uppercase transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-35 mt-8 w-full justify-center sm:w-auto"
                 >
                   {loading ? "Sending…" : "Send request"}
                 </button>
@@ -184,7 +184,7 @@ function ContactPage() {
               <h2 className="label-mono border-b pb-3">Your request</h2>
               {hasSelection ? (
                 <>
-                  <p className="pt-4 font-display text-lg font-medium tracking-tight">
+                  <p className="tech-caps pt-4 text-base">
                     {booking.serviceTitle}
                   </p>
                   <ul className="mt-4">

@@ -81,7 +81,7 @@ function ServicePage() {
 
           <header className="mt-8 border-b pb-8">
             <p className="font-mono text-xs text-coral">{service.number}</p>
-            <h1 className="mt-3 text-3xl font-semibold sm:text-4xl md:text-5xl">{service.title}</h1>
+            <h1 className="tech-caps mt-3 text-3xl sm:text-4xl md:text-5xl">{service.title}</h1>
             <p className="mt-4 max-w-xl text-sm text-muted-foreground md:text-base">
               {service.summary}
             </p>
@@ -129,7 +129,7 @@ function ServicePage() {
               ))}
 
               <section className="mt-12 border-t pt-8">
-                <h2 className="font-display text-xl font-medium tracking-tight">
+                <h2 className="tech-caps text-lg md:text-xl">
                   When do you need this completed?
                 </h2>
                 <p className="mt-2 text-sm text-muted-foreground">
@@ -199,7 +199,7 @@ function ServicePage() {
             type="button"
             onClick={proceed}
             disabled={selected.length === 0}
-            className="focus-ring min-h-[44px] rounded-sm bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors duration-200 hover:bg-accent disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-primary"
+            className="focus-ring glow-signal inline-flex min-h-[48px] items-center gap-3 rounded-full bg-primary px-6 text-sm font-semibold tracking-widest text-primary-foreground uppercase transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-35"
           >
             Proceed
           </button>
